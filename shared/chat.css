@@ -1,0 +1,58 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+body {
+	font: 12pt Arial;
+}
+#all {
+	padding: 10px;
+}
+#chatlog {
+	height: 300px;
+	width: 500px;
+	padding: 3px 10px;
+	border-style: solid;
+	border-color: #DDD;
+	border-width: 1px 1px 0;
+	overflow-y: scroll;
+	overflow-h: hidden;
+	list-style: none;
+}
+li.error {
+	color: red;
+	font-weight: bold;
+}
+li.entry .username {
+	color: green;
+	margin-right: 4px;
+}
+li.entry .username:after {
+	content: ":";
+}
+input {
+	font: 12pt Arial;
+	padding: 3px 10px;
+	border-style: solid;
+	border-color: #DDD;
+	border-width: 0 1px 1px;
+	background: #F8F8F8;
+	outline: none;
+}
+input#username {
+	width: 100px;
+	border-right-width: 0;
+	background: white;
+}
+input#message {
+	width: 380px;
+	border-left-width: 0;
+}
+input.activity {
+	background-image: url(activity.gif);
+	background-repeat: no-repeat;
+	background-position: 97% center;
+}

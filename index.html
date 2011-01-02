@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Chat</title>
+		<script type="text/javascript" src="shared/jquery-1.4.4-min.js"></script>
+		<script type="text/javascript" src="shared/chat.js"></script>
+		<link rel="styleSheet" type="text/css" href="shared/chat.css" />
+		<script type="text/javascript">
+//<![CDATA[
+var chat;
+var implementations=['apache-php'];
+$(document).ready(function() {
+	// Determine server implementation
+	var implementation, requestedImplementation=document.location.search.substr(1);
+	for(var i=0; i<implementations; i++) {
+		if(implementations[i]===requestedImplementation) {
+			implementation=requestedImplementation;
+			break;
+		}
+	}
+	if(!implementation) {
+		implementation=implementations[0];
+	}
+	console.log('Using implementation '+implementation);
+	
+	// Init chat
+	chat=new ChatClient($('#chatlog'), 15000, implementation+'/');
+	chat.bindMessageInput('#message');
+	setTimeout(chat.startPolling, 10);
+	$('#username').change(function(event) {
+		chat.username=event.currentTarget.value;
+	});
+	chat.setUsername=function(name) {
+		$('#username').val(name);
+		chat.username=name;
+	}
+	chat.setUsername('user'+Math.round(Math.random()*10000));
+});
+//]]>
+		</script>
+	</head>
+	<body>
+		<div id="all">
+			<ul id="chatlog"></ul>
+			<input type="text" id="username" /><input type="text" id="message" />
+		</div>
+	</body>
+</html>

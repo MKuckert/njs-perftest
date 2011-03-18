@@ -9,11 +9,11 @@
 		<script type="text/javascript">
 //<![CDATA[
 var chat;
-var implementations=['apache-php'];
+var implementations=['nodejs', 'apache-php'];
 $(document).ready(function() {
 	// Determine server implementation
 	var implementation, requestedImplementation=document.location.search.substr(1);
-	for(var i=0; i<implementations; i++) {
+	for(var i=0; i<implementations.length; i++) {
 		if(implementations[i]===requestedImplementation) {
 			implementation=requestedImplementation;
 			break;
